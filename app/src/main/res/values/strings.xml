@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Connect_4</string>
+    <string name="btAjuda">Ajuda</string>
+    <string name="btJugar">Començar partida</string>
+    <string name="btSortir">Sortir</string>
+
+
+    <string name="btEnrere">Tornar enrere</string>
+    <string name="TextAjuda">El joc consisteix en anar introduint fitxer en un tauler vertical amb l\'objectiu d\'alinear consecutives del color assignat al jugador (roig) abans que el teu oponent.
+    /n /n    A cada torn el jugador introdueix una fitxa a la columna triada (sempre i quan no estigui completa), i aquesta cau a la posició més baixa possible.
+    /n /n    Guanya la partida el jugador que primer aconsegueixi alinear fitxes consecutives del seu color en horitzontal, vertical o diagonal.
+    /n /n    Si totes les columnes estan plenes i ningú ha aconseguit alinear-ne fitxes, hi ha empat.
+    </string>
+
+    <string name="Alias">Alias identificatiu</string>
+    <string name="MidaGraella">Mida graella</string>
+    <string name="ControlTemps">Control del temps</string>
+    <string name="_7">7</string>
+    <string name="_6">6</string>
+    <string name="_5">5</string>
+    <string name="Començar">Començar</string>
+    <string name="Mssg">Siusplau, tria un nom d'usuari</string>
+
+
+    <string name="DiaHoraText">Dia i hora</string>
+    <string name="Log">Valors del log</string>
+    <string name="DestEmail">E-mail destinatari</string>
+    <string name="EnvEmail">Enviar e-mail</string>
+    <string name="NovaPartida">Nova partida</string>
+
+
+    <string name="Torn">Torn:</string>
+    <string name="Temps">Temps:</string>
+</resources>
