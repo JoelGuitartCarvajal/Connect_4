@@ -20,7 +20,8 @@ public class JocActv extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joc_actv);
         getValues();
-        Board board = new Board(mida);
+        Board board = new Board(mida,controlTemps);
+        board.initializeBoard();
         GridView gridView = findViewById(R.id.graella);
 
     }

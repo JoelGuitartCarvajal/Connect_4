@@ -16,6 +16,4 @@ public class Piece {
     public static int getState() {
         return state;
     }
-
-
 }
