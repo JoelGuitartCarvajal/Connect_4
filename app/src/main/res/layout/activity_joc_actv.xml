@@ -21,10 +21,16 @@
             android:text="@string/Torn"
             android:textSize="24sp" />
 
+        s<Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
         <ImageView
             android:id="@+id/torn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/turn_red" />
 
         <TextView
             android:id="@+id/textView5"
