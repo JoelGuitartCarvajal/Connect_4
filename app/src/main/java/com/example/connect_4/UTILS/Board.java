@@ -1,23 +1,19 @@
 package com.example.connect_4.UTILS;
-import android.os.CountDownTimer;
-
-import com.example.connect_4.UTILS.Piece;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public class Board  {
     private static int size;
     private Piece[][] board;
     private static boolean controlTemps;
     private CounterTime clock;
-    private List<Tuple> llocsPosibles;
+    private List<Tuple> llocsPosibles = new ArrayList<>();
     private List<Tuple> pecesUsuari;
     private List<Tuple> pecesCPU;
     boolean timeToEnd = false;
     long temps;
+    int torn = 1;
 
     public Board(int size, boolean controlTemps){
         this.size = size;
@@ -25,6 +21,8 @@ public class Board  {
         this.controlTemps = controlTemps;
     }
     public void initializeBoard(){
+        pecesUsuari = new ArrayList<>();
+        pecesCPU = new ArrayList<>();
         for (int i=0; i< size;i++){
             for(int j=0; j< size;j++){
                 board[i][j] = new Piece();
@@ -40,7 +38,7 @@ public class Board  {
         }
     }
 
-    private void getPossiblePositions() {
+    public void getPossiblePositions() {
         llocsPosibles.clear();
         for (int j=0; j< size;j++){
             for(int i=0; i< size;i++){
@@ -49,5 +47,38 @@ public class Board  {
                 }
             }
         }
+    }
+    public List<Tuple> getUserPositions(){
+        return pecesUsuari;
+    }
+    public List<Tuple> getCPUPositions(){
+        return pecesCPU;
+    }
+    public List<Tuple> getPosiblePositions(){
+        return llocsPosibles;
+    }
+
+    public void doMovement(Tuple positions){
+        if (this.torn == 1){
+            pecesUsuari.add(positions);
+            board[positions.getTupleI()][positions.getTupleJ()].setState(1);
+        }
+        else{
+            pecesCPU.add(positions);
+            board[positions.getTupleI()][positions.getTupleJ()].setState(2);
+        }
+    }
+
+    public void changeTurn() {
+        if(this.torn == 1){
+            this.torn = 2;
+        }
+        else {
+            this.torn = 1;
+        }
+    }
+
+    public int getTime() {
+        return (int) clock.getTime();
     }
 }

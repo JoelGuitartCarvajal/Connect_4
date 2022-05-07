@@ -27,8 +27,9 @@ public class JocActv extends AppCompatActivity {
         Board board = new Board(mida,controlTemps);
         board.initializeBoard();
         GridView gridView = findViewById(R.id.graella);
-        ImageAdapter imageAdapter = new ImageAdapter(this, mida, board);
-        gridView.setAdapter();
+        ImageAdapter imageAdapter = new ImageAdapter(this, mida, board,controlTemps,alias,fotoTorn,temps);
+        gridView.setAdapter(imageAdapter);
+        gridView.setNumColumns(mida);
 
     }
 
