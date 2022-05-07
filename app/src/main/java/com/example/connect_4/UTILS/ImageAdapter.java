@@ -4,17 +4,24 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
-    private int size;
-    public ImageAdapter (Context c, int size){
+    private int mida;
+    private Board board;
+    private boolean controlTemps;
+    private String alias;
+    private ImageView fotoTorn;
+
+    public ImageAdapter (Context c, int size, Board board){
         this.mContext = c;
-        this.size = size;
+        this.mida = size;
+        this.board=board;
     }
     @Override
     public int getCount() {
-        return size*size;
+        return mida * mida;
     }
     @Override
     public Object getItem(int position){
