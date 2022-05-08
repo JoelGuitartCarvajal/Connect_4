@@ -81,4 +81,77 @@ public class Board  {
     public int getTime() {
         return (int) clock.getTime();
     }
+
+    public boolean isFinalMovement(Tuple positions) {
+        int maximPieces = size * size - getUserPositions().size() - getCPUPositions().size();
+        if(maximPieces == 0){
+            return true;
+        } else if(fourInCol(positions)){
+            return true;
+        } else if(fourInRow(positions)){
+            return true;
+        } else if(fourInMainDiagonal(positions)){
+            return true;
+        }
+    }
+
+    private boolean fourInMainDiagonal(Tuple positions) {
+        int reversedTorn = torn;
+        int connect = 0;
+        if(reversedTorn == 1){
+            reversedTorn = 2;
+        } else {
+            reversedTorn = 1;
+        }
+        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size; i++,j++ ){
+            if(board[i][j].getState()!=reversedTorn ){
+                break;
+            }
+            connect++;
+        }
+    }
+
+    private boolean fourInRow(Tuple positions) {
+        int reversedTorn = torn;
+        int connect = 0;
+        if(reversedTorn == 1){
+            reversedTorn = 2;
+        } else {
+            reversedTorn = 1;
+        }
+        for (int i=0; i<size; i++){
+            if(board[positions.getTupleI()][i].getState() == reversedTorn){
+                connect++;
+            }
+            else {
+                connect = 0;
+            }
+            if(connect == 4){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean fourInCol(Tuple positions) {
+        int reversedTorn = torn;
+        int connect = 0;
+        if(reversedTorn == 1){
+            reversedTorn = 2;
+        } else {
+             reversedTorn = 1;
+        }
+        for (int i=0; i<size; i++){
+            if(board[i][positions.getTupleJ()].getState() == reversedTorn){
+                connect++;
+            }
+            else {
+                connect = 0;
+            }
+            if(connect == 4){
+                return true;
+            }
+        }
+        return false;
+    }
 }

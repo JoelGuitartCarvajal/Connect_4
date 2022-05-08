@@ -88,6 +88,22 @@ public class ImageAdapter extends BaseAdapter {
         public void onClick(View view) {
             if (board.getPosiblePositions().contains(positions)) {
                 doMovement(positions);
+                if(isFinal()){
+                    goToResults();
+                }
+            }
+        }
+
+        private boolean isFinal() {
+            if(board.isFinalMovement(positions)){
+                return true;
+            }else{
+                if(board.timeToEnd){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
         }
 
@@ -97,18 +113,19 @@ public class ImageAdapter extends BaseAdapter {
             board.getPossiblePositions();
             updateTorn();
             updateTemps();
+            notifyDataSetChanged();
         }
     }
 
-    @SuppressLint("ResourceAsColor")
+
     private void updateTemps() {
         if(this.controlTemps){
             this.tempsRestant.setText(String.valueOf(board.getTime() / 1000));
-            this.tempsRestant.setTextColor(R.color.red);
+            this.tempsRestant.setTextColor(mContext.getResources().getColor(R.color.red));
         }
         else {
             this.tempsRestant.setText(String.valueOf((System.currentTimeMillis() / 1000) - board.temps));
-            this.tempsRestant.setTextColor(R.color.blue);
+            this.tempsRestant.setTextColor(mContext.getResources().getColor(R.color.blue));
         }
     }
 
