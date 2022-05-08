@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".JocActv">
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,26 +17,27 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:text="@string/Torn"
             android:textSize="24sp" />
 
-        s<Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+        <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/torn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/turn_red" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="175dp"
+            android:layout_marginLeft="240dp"
             android:layout_weight="1"
             android:gravity="right"
             android:text="@string/Temps"
@@ -50,15 +52,14 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="674dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <GridView
             android:id="@+id/graella"
             android:layout_width="fill_parent"
-            android:layout_height="602dp"
-            android:layout_marginTop="60dp"
+            android:layout_height="wrap_content"
             android:fadingEdge="vertical"
             android:gravity="center"
             android:horizontalSpacing="-10dp"

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board  {
-    private static int size;
-    private Piece[][] board;
-    private static boolean controlTemps;
-    private CounterTime clock;
-    private List<Tuple> llocsPosibles = new ArrayList<>();
-    private List<Tuple> pecesUsuari;
-    private List<Tuple> pecesCPU;
+    public int size;
+    public Piece[][] board;
+    public boolean controlTemps;
+    public CounterTime clock;
+    public List<Integer> llocsPosibles = new ArrayList<>();
+    public List<Integer> pecesUsuari;
+    public List<Integer> pecesCPU;
     boolean timeToEnd = false;
     long temps;
     int torn = 1;
@@ -41,32 +41,45 @@ public class Board  {
 
     public void getPossiblePositions() {
         llocsPosibles.clear();
-        for (int j=0; j< size;j++){
+        /*for (int j=0; j< size;j++){
             for(int i=0; i< size;i++){
                 if(board[i][j].getState() == 0 && (i+1 == size || board[i+1][j].getState()!=0) ){
                     llocsPosibles.add(board[i][j].getTuple());
                 }
             }
+        }*/
+        boolean emptyColumn = true;
+        for (int j = 0; j < size; j++) {
+            for (int i = 0; i < size && emptyColumn; i++) {
+                if (board[i][j].getState()!=0) {
+                    llocsPosibles.add(((i - 1) * size) + j);
+                    emptyColumn = false;
+                }
+            }
+            if (emptyColumn) {
+                llocsPosibles.add(((size - 1) * size) + j);
+            }
+            emptyColumn = true;
         }
     }
-    public List<Tuple> getUserPositions(){
+    public List<Integer> getUserPositions(){
         return pecesUsuari;
     }
-    public List<Tuple> getCPUPositions(){
+    public List<Integer> getCPUPositions(){
         return pecesCPU;
     }
-    public List<Tuple> getPosiblePositions(){
+    public List<Integer> getposiblepositions(){
         return llocsPosibles;
     }
 
-    public void doMovement(Tuple positions){
+    public void doMovement(int position){
         if (this.torn == 1){
-            pecesUsuari.add(positions);
-            board[positions.getTupleI()][positions.getTupleJ()].setState(1);
+            pecesUsuari.add(position);
+            board[position/size][position % size].setState(1);
         }
         else{
-            pecesCPU.add(positions);
-            board[positions.getTupleI()][positions.getTupleJ()].setState(2);
+            pecesCPU.add(position);
+            board[position / size][position % size].setState(2);
         }
     }
 
@@ -83,69 +96,124 @@ public class Board  {
         return (int) clock.getTime();
     }
 
-    public boolean isFinalMovement(Tuple positions) {
+    public boolean isFinalMovement(int position) {
         maximPieces = size * size - getUserPositions().size() - getCPUPositions().size();
         if(maximPieces == 0){
             return true;
-        } else if(fourInCol(positions)){
+        } else if(fourInCol(position)){
             return true;
-        } else if(fourInRow(positions)){
+        } else if(fourInRow(position)){
             return true;
-        } else if(fourInMainDiagonal(positions)){
+        } else if(fourInMainDiagonal(position)){
             return true;
-        } else if(fourInContraDiagonal(positions)){
+        } else if(fourInContraDiagonal(position)){
             return true;
         }
         return false;
     }
 
-    private boolean fourInContraDiagonal(Tuple positions) {
-        int reversedTorn = torn;
+    private boolean fourInContraDiagonal(int position) {
+        /*int reversedTorn = torn;
         int connect = 1;
         if(reversedTorn == 1){
             reversedTorn = 2;
         } else {
             reversedTorn = 1;
         }
-        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i++,j++ ){
+        for (int i =position / size, j = position % size; i < size && j < size && i>=0 && j>=0; i++,j++ ){
             if(board[i][j].getState()!=reversedTorn ){
                 break;
+            }else {
+                connect++;
             }
-            connect++;
         }
-        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i--,j-- ){
+        for (int i =position / size, j = position % size; i < size && j < size && i>=0 && j>=0; i--,j-- ){
             if(board[i][j].getState()!=reversedTorn ){
                 break;
+            } else {
+                connect++;
             }
-            connect++;
         }
-        return connect >= 4;
+        return connect >= 4;*/
+        int connected = 1;
+        int x = position/size;
+        int y = position%size;
+        if((position + ((size-1)*y)>size*size-1)) {
+            position = position +(size-1)*((size-x-1));
+            x = position / size;
+            y = position % size;
+        }else{
+            if(x!=4) {
+                position = position + ((size - 1) * y);
+            }
+            x = position / size;
+            y = position % size;
+        }
+
+        for (int i=x, j=y; i>0 && j<size-1; i--, j++) {
+            if (y != size - 1) {
+                if (board[i][j].getState() == board[i - 1][j + 1].getState() && board[i - 1][j + 1].getState() != 0) {
+                    connected++;
+                } else {
+                    if (connected == 4) {
+                        return true;
+                    }
+                    connected = 1;
+                }
+            }
+        }
+        return connected == 4;
     }
 
-    private boolean fourInMainDiagonal(Tuple positions) {
-        int reversedTorn = torn;
+    private boolean fourInMainDiagonal(int position) {
+       /* int reversedTorn = torn;
         int connect = 1;
         if(reversedTorn == 1){
             reversedTorn = 2;
         } else {
             reversedTorn = 1;
         }
-        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i++,j-- ){
+        for (int i =position / size, j = position % size; i < size && j < size && i>=0 && j>=0; i++,j-- ){
             if(board[i][j].getState()!=reversedTorn ){
                 break;
+            } else {
+                connect++;
             }
-            connect++;
         }
-        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i--,j++ ){
+        for (int i =position /size, j = position % size; i < size && j < size && i>=0 && j>=0; i--,j++ ){
             if(board[i][j].getState()!=reversedTorn ){
                 break;
+            } else {
+                connect++;
             }
-            connect++;
         }
-        return connect >= 4;
+        return connect >= 4;*/
+        int connected = 1;
+        int x = position/size;
+        int y = position%size;
+        if((position - ((size+1)*y)<0)) {
+            position = position - ((size + 1) * x);
+            x = position / size;
+            y = position % size;
+        }else{
+            position = position - ((size + 1) * y);
+            x = position / size;
+            y = position % size;
+        }
+
+        for (int i=x, j=y; i<size-1 && j<size-1; i++, j++){
+            if (board[i][j].getState() == board[i+1][j+1].getState() && board[i+1][j+1].getState() != 0) {
+                connected++;
+            }
+            else {
+                if(connected == 4){return true;}
+                connected = 1;
+            }
+        }
+        return connected == 4;
     }
 
-    private boolean fourInRow(Tuple positions) {
+    private boolean fourInRow(int position) {
         int reversedTorn = torn;
         int connect = 0;
         if(reversedTorn == 1){
@@ -154,7 +222,7 @@ public class Board  {
             reversedTorn = 1;
         }
         for (int i=0; i<size; i++){
-            if(board[positions.getTupleI()][i].getState() == reversedTorn){
+            if(board[position / size][i].getState() == reversedTorn){
                 connect++;
             }
             else {
@@ -167,7 +235,7 @@ public class Board  {
         return false;
     }
 
-    private boolean fourInCol(Tuple positions) {
+    private boolean fourInCol(int position) {
         int reversedTorn = torn;
         int connect = 0;
         if(reversedTorn == 1){
@@ -176,7 +244,7 @@ public class Board  {
              reversedTorn = 1;
         }
         for (int i=0; i<size; i++){
-            if(board[i][positions.getTupleJ()].getState() == reversedTorn){
+            if(board[i][position % size].getState() == reversedTorn){
                 connect++;
             }
             else {

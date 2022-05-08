@@ -6,9 +6,11 @@
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1295" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1295" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_ajuda.xml" value="0.25" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_ajuda_land.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_configuracio.xml" value="0.22" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_joc_actv.xml" value="0.25" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main_land.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_resultat_partida.xml" value="0.25" />
       </map>
     </option>

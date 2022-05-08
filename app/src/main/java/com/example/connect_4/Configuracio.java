@@ -14,12 +14,13 @@ import android.widget.Toast;
 
 public class Configuracio extends AppCompatActivity implements View.OnClickListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracio);
-        Button començarBt = findViewById(R.id.btComençar);
-        començarBt.setOnClickListener(this);
+        Button startBt = findViewById(R.id.btSTART);
+        startBt.setOnClickListener(this);
     }
 
     @Override
@@ -29,7 +30,7 @@ public class Configuracio extends AppCompatActivity implements View.OnClickListe
         RadioButton mida = findViewById(radioGroup.getCheckedRadioButtonId());
         CheckBox temps = findViewById(R.id.controlTemps);
         switch(view.getId()){
-            case R.id.btComençar:
+            case R.id.btSTART:
                 if(!alias.getText().toString().isEmpty()) {
                     Intent intent = new Intent(this, JocActv.class);
                     intent.putExtra("alias",alias.getText().toString());
@@ -40,6 +41,7 @@ public class Configuracio extends AppCompatActivity implements View.OnClickListe
                 } else {
                     Toast.makeText(this,R.string.Mssg, Toast.LENGTH_SHORT).show();
                 }
+                break;
         }
     }
 }

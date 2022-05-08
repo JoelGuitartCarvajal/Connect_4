@@ -1,6 +1,5 @@
 package com.example.connect_4.UTILS;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.connect_4.R;
 import com.example.connect_4.ResultatPartida;
@@ -57,20 +57,20 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             btn = (Button) convertView;
         }
-        int x = position / mida;
+        /*int x = position / mida;
         int y = position % mida;
-        Tuple tupla = new Tuple(x, y);
-        btn.setBackgroundResource(setBackground(tupla));
-        btn.setOnClickListener(new MyOnClickListener(tupla, mContext));
+        Tuple tupla = new Tuple(x, y);*/
+        btn.setBackgroundResource(setBackground(position));
+        btn.setOnClickListener(new MyOnClickListener(mContext, position));
         btn.setId(position);
         return btn;
     }
 
-    private int setBackground(Tuple positions) {
-        if (board.getUserPositions().contains(positions)) {
+    private int setBackground(int position) {
+        if (board.getUserPositions().contains(position)) {
             return R.drawable.red_piece;
         }
-        if (board.getCPUPositions().contains(positions)) {
+        if (board.getCPUPositions().contains(position)) {
             return R.drawable.yellow_piece;
         } else {
             return R.drawable.empty_piece;
@@ -78,27 +78,35 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     private class MyOnClickListener implements View.OnClickListener {
-        private Tuple positions;
+        private int position;
         private Context context;
 
-        MyOnClickListener(Tuple positions, Context context) {
-            this.positions = positions;
+        MyOnClickListener(Context context, int position) {
             this.context = context;
+            this.position = position;
 
         }
 
         @Override
         public void onClick(View view) {
-            if (board.getPosiblePositions().contains(positions)) {
-                doMovement(positions);
+            if (board.getposiblepositions().contains(position)) {
+                doMovement(position);
                 if(isFinal()){
                     goToResults();
+                } else {
+                    position = ramdomCPU(position);
+                    doMovement(position);
+                    if(isFinal()){
+                        goToResults();
+                    }
                 }
+            } else {
+                Toast.makeText(context, "Moviment invàlid", Toast.LENGTH_SHORT).show();
             }
         }
 
         private boolean isFinal() {
-            if(board.isFinalMovement(positions)){
+            if(board.isFinalMovement(position)){
                 return true;
             }else{
                 if(board.timeToEnd){
@@ -110,14 +118,22 @@ public class ImageAdapter extends BaseAdapter {
             }
         }
 
-        private void doMovement(Tuple positions) {
-            board.doMovement(positions);
+        private void doMovement(int positions) {
+            board.doMovement(position);
             board.changeTurn();
             board.getPossiblePositions();
             updateTorn();
             updateTemps();
             notifyDataSetChanged();
         }
+    }
+
+    private Integer ramdomCPU(int position) {
+        int randomInt = 100;
+        while (!board.getposiblepositions().contains(randomInt)) {
+            randomInt = (int) (Math.random() * (mida * mida));
+        }
+        return randomInt;
     }
 
     private void goToResults() {

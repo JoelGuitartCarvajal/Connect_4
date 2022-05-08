@@ -2,7 +2,7 @@ package com.example.connect_4.UTILS;
 
 public class Piece {
     // Tres estats: 0 buida, 1 vermell, 2 groc
-    private int state;
+    public int state;
     private static Tuple position;
     // Comencem amb estat buit (0)
     public Piece (){

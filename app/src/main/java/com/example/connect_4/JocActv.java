@@ -13,11 +13,11 @@ import com.example.connect_4.UTILS.ImageAdapter;
 
 public class JocActv extends AppCompatActivity {
 
-    private static String alias;
-    private static int mida;
-    private static boolean controlTemps;
-    private ImageView fotoTorn;
-    private TextView temps;
+    public String alias;
+    public int mida;
+    public boolean controlTemps;
+    public ImageView fotoTorn;
+    public TextView temps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class JocActv extends AppCompatActivity {
         board.initializeBoard();
         GridView gridView = findViewById(R.id.graella);
         ImageAdapter imageAdapter = new ImageAdapter(this, mida, board,controlTemps,alias,fotoTorn,temps);
-        gridView.setAdapter(imageAdapter);
         gridView.setNumColumns(mida);
+        gridView.setAdapter(imageAdapter);
 
     }
 
