@@ -1,7 +1,9 @@
 package com.example.connect_4.UTILS;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,9 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.connect_4.R;
+import com.example.connect_4.ResultatPartida;
 
 public class ImageAdapter extends BaseAdapter {
-    private Context mContext;
+    private Activity mContext;
     private int mida;
     private Board board;
     private boolean controlTemps;
@@ -20,7 +23,7 @@ public class ImageAdapter extends BaseAdapter {
     private ImageView fotoTorn;
     private TextView tempsRestant;
 
-    public ImageAdapter(Context mContext, int mida, Board board, boolean controlTemps, String alias, ImageView fotoTorn, TextView tempsRestant) {
+    public ImageAdapter(Activity mContext, int mida, Board board, boolean controlTemps, String alias, ImageView fotoTorn, TextView tempsRestant) {
         this.mContext = mContext;
         this.mida = mida;
         this.board = board;
@@ -115,6 +118,28 @@ public class ImageAdapter extends BaseAdapter {
             updateTemps();
             notifyDataSetChanged();
         }
+    }
+
+    private void goToResults() {
+        int timeLeft;
+        if(controlTemps){
+            if(board.timeToEnd){
+                timeLeft = 0;
+            } else {
+                timeLeft = board.getTime() / 1000;
+            }
+        } else {
+            timeLeft = (int) (System.currentTimeMillis() / 1000 - board.temps);
+        }
+        Intent intent = new Intent(mContext, ResultatPartida.class);
+        intent.putExtra("alias", alias);
+        intent.putExtra("mida",mida);
+        intent.putExtra("temps",controlTemps);
+        intent.putExtra("tempsrestant", timeLeft);
+        intent.putExtra("torn", board.torn);
+        intent.putExtra("empat",board.maximPieces);
+        mContext.startActivity(intent);
+        mContext.finish();
     }
 
 

@@ -14,6 +14,7 @@ public class Board  {
     boolean timeToEnd = false;
     long temps;
     int torn = 1;
+    int maximPieces;
 
     public Board(int size, boolean controlTemps){
         this.size = size;
@@ -83,7 +84,7 @@ public class Board  {
     }
 
     public boolean isFinalMovement(Tuple positions) {
-        int maximPieces = size * size - getUserPositions().size() - getCPUPositions().size();
+        maximPieces = size * size - getUserPositions().size() - getCPUPositions().size();
         if(maximPieces == 0){
             return true;
         } else if(fourInCol(positions)){
@@ -92,23 +93,56 @@ public class Board  {
             return true;
         } else if(fourInMainDiagonal(positions)){
             return true;
+        } else if(fourInContraDiagonal(positions)){
+            return true;
         }
+        return false;
     }
 
-    private boolean fourInMainDiagonal(Tuple positions) {
+    private boolean fourInContraDiagonal(Tuple positions) {
         int reversedTorn = torn;
-        int connect = 0;
+        int connect = 1;
         if(reversedTorn == 1){
             reversedTorn = 2;
         } else {
             reversedTorn = 1;
         }
-        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size; i++,j++ ){
+        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i++,j++ ){
             if(board[i][j].getState()!=reversedTorn ){
                 break;
             }
             connect++;
         }
+        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i--,j-- ){
+            if(board[i][j].getState()!=reversedTorn ){
+                break;
+            }
+            connect++;
+        }
+        return connect >= 4;
+    }
+
+    private boolean fourInMainDiagonal(Tuple positions) {
+        int reversedTorn = torn;
+        int connect = 1;
+        if(reversedTorn == 1){
+            reversedTorn = 2;
+        } else {
+            reversedTorn = 1;
+        }
+        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i++,j-- ){
+            if(board[i][j].getState()!=reversedTorn ){
+                break;
+            }
+            connect++;
+        }
+        for (int i =positions.getTupleI(), j = positions.getTupleJ(); i < size && j < size && i>=0 && j>=0; i--,j++ ){
+            if(board[i][j].getState()!=reversedTorn ){
+                break;
+            }
+            connect++;
+        }
+        return connect >= 4;
     }
 
     private boolean fourInRow(Tuple positions) {
