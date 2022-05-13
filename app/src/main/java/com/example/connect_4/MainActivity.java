@@ -1,6 +1,7 @@
 package com.example.connect_4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = findViewById(R.id.toolbar);
-        setActionBar(toolbar);
+        toolbar = findViewById(R.id.toolbar_main);
+        setSupportActionBar(toolbar);
         PreferenceManager.setDefaultValues(this,R.xml.preferences,false);
 
         Button ajudaBt = findViewById(R.id.ajuda);
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         començarBt.setOnClickListener(this);
         sortirBt.setOnClickListener(this);
     }
+
 
 
     @Override

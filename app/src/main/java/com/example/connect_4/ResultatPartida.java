@@ -1,6 +1,7 @@
 package com.example.connect_4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.Date;
 
@@ -34,8 +34,8 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultat_partida);
 
-        toolbar = findViewById(R.id.toolbar);
-        setActionBar(toolbar);
+        toolbar = findViewById(R.id.toolbar_resultat);
+        setSupportActionBar(toolbar);
 
 
         getIntentValues();

@@ -2,13 +2,26 @@ package com.example.connect_4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 
 public class PreferencesActivity extends AppCompatActivity {
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preferences);
+        getFragmentManager().beginTransaction().replace(android.R.id.content,new OpcionesFragment()).commit();
+
+    }
+    public static class OpcionesFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstaceState) {
+            super.onCreate(savedInstaceState);
+            addPreferencesFromResource(R.xml.preferences);
+            PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, false);
+        }
     }
 }
