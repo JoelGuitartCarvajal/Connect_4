@@ -3,7 +3,8 @@
     <string name="btAjuda">Ajuda</string>
     <string name="btJugar">Començar partida</string>
     <string name="btSortir">Sortir</string>
-
+    <string name="btConfig">Configuració</string>
+    <string name="configPreferences">Configuració partida</string>
 
     <string name="btEnrere">Tornar enrere</string>
     <string name="TextAjuda">El joc consisteix en anar introduint fitxer en un tauler vertical amb l\'objectiu d\'alinear consecutives del color assignat al jugador (roig) abans que el teu oponent.

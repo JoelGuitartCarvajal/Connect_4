@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#BA0615"
+        android:textSize="8sp"
+        android:title="@string/configPreferences"
+        tools:text="@string/configPreferences">
+
+        <EditTextPreference
+            android:id="@+id/preference_usuari"
+            android:defaultValue="Usuari 1"
+            android:key="@string/Alias"
+            android:title="Nom d'usuari"
+            android:summary="Nom de l'usuari"
+            android:dialogTitle="Introdueix el nom"/>
+        <ListPreference
+            android:id = "@+id/preference_board_size"
+            android:defaultValue="7"
+            android:entries="@array/board_size"
+            android:entryValues="@array/board_size"
+            android:key="board_size"
+            android:title="Mida graella"
+            android:summary="Mida de la graella del joc"
+            android:dialogTitle="Selecciona el valor"/>
+        <CheckBoxPreference
+            android:id="@+id/preference_control_temps"
+            android:defaultValue="false"
+            android:key="control_temps"
+            android:title="@string/ControlTemps"
+            android:summary="Marca si vols control de temps"/>
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

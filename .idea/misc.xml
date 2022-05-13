@@ -11,7 +11,11 @@
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_joc_actv.xml" value="0.25" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main_land.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_preferences.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_resultat_partida.xml" value="0.25" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/list_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/xml/preferences.xml" value="0.25" />
       </map>
     </option>
   </component>

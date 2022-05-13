@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.Date;
 
@@ -24,11 +27,17 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
     private EditText data;
     private EditText log;
     private EditText email;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultat_partida);
+
+        toolbar = findViewById(R.id.toolbar);
+        setActionBar(toolbar);
+
+
         getIntentValues();
         data = findViewById(R.id.diaihora);
         log = findViewById(R.id.valorslog);
@@ -106,6 +115,24 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
                 }else {
                     Toast.makeText(this, "Posa un email valid", Toast.LENGTH_SHORT).show();
                 }
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.config:
+                Intent intent1 = new Intent(this, PreferencesActivity.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
     }
 }
