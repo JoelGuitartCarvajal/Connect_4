@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="91dp"
         android:background="@color/blue"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -20,6 +20,14 @@
     <fragment
         android:id="@+id/fragmentJoc"
         class="com.example.connect_4.Fragments.Grid_GameFragment"
+        android:layout_width="match_parent"
+        android:layout_height="770dp">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentLogJoc"
+        class="com.example.connect_4.Fragments.GameLogFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

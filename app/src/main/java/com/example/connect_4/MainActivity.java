@@ -42,8 +42,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.jugar:
-                Intent intent2 = new Intent(this,Configuracio.class);
+                Intent intent2 = new Intent(this,JocActv.class);
                 startActivity(intent2);
+                finish();
+                break;
+            case R.id.btConsult:
+                Intent intent3 = new Intent(this,ConsultActv.class);
+                startActivity(intent3);
                 finish();
                 break;
             case R.id.sortir:

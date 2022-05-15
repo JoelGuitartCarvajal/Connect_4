@@ -10,9 +10,9 @@
 
         <EditTextPreference
             android:id="@+id/preference_usuari"
-            android:defaultValue="Usuari 1"
+            android:defaultValue="false"
             android:dialogTitle="Introdueix el nom"
-            android:key="@string/Alias"
+            android:key="alias"
             android:summary="Nom de l'usuari"
             android:title="Nom d'usuari" />
         <ListPreference

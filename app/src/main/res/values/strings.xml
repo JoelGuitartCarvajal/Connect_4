@@ -8,9 +8,9 @@
 
     <string name="btEnrere">Tornar enrere</string>
     <string name="TextAjuda">El joc consisteix en anar introduint fitxer en un tauler vertical amb l\'objectiu d\'alinear consecutives del color assignat al jugador (roig) abans que el teu oponent.
-    /n /n    A cada torn el jugador introdueix una fitxa a la columna triada (sempre i quan no estigui completa), i aquesta cau a la posició més baixa possible.
-    /n /n    Guanya la partida el jugador que primer aconsegueixi alinear fitxes consecutives del seu color en horitzontal, vertical o diagonal.
-    /n /n    Si totes les columnes estan plenes i ningú ha aconseguit alinear-ne fitxes, hi ha empat.
+        A cada torn el jugador introdueix una fitxa a la columna triada (sempre i quan no estigui completa), i aquesta cau a la posició més baixa possible.
+        Guanya la partida el jugador que primer aconsegueixi alinear fitxes consecutives del seu color en horitzontal, vertical o diagonal.
+        Si totes les columnes estan plenes i ningú ha aconseguit alinear-ne fitxes, hi ha empat.
     </string>
 
     <string name="Alias">Alias identificatiu</string>
@@ -32,4 +32,6 @@
 
     <string name="Torn">Torn:</string>
     <string name="Temps">Temps:</string>
+    <string name="consultar_partides">Consultar partides</string>
+    <string name="logJoc">In Game Log</string>
 </resources>

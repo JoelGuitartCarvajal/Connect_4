@@ -36,25 +36,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
         android:layout_marginEnd="159dp"
+        android:layout_marginBottom="152dp"
         android:text="@string/btJugar"
         app:layout_constraintBottom_toTopOf="@+id/sortir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ajuda" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btConsult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="88dp"
+        android:text="@string/consultar_partides"
+        app:layout_constraintBottom_toTopOf="@+id/sortir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/sortir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="76dp"
         android:text="@string/btSortir"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jugar" />
+        tools:layout_editor_absoluteX="168dp" />
 
     <ImageView
         android:id="@+id/imageView"

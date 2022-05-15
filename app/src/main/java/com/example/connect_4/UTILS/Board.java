@@ -15,11 +15,13 @@ public class Board  {
     long temps;
     int torn = 1;
     int maximPieces;
+    public String alias;
 
-    public Board(int size, boolean controlTemps){
+    public Board(int size, boolean controlTemps,String alias){
         this.size = size;
         this.board = new Piece[size][size];
         this.controlTemps = controlTemps;
+        this.alias = alias;
     }
     public void initializeBoard(){
         pecesUsuari = new ArrayList<>();
