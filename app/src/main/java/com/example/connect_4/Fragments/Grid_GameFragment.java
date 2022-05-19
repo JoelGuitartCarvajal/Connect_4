@@ -21,31 +21,33 @@ import com.example.connect_4.UTILS.ImageAdapter;
 public class Grid_GameFragment extends Fragment {
 
     public GridGameListener listener;
-    public String alias;
-    public int mida;
-    public boolean controlTemps;
+    public String alias = "Prova";
+    public int mida = 7;
+    public boolean controlTemps = false;
     public ImageView fotoTorn;
     public TextView temps;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getPreferences();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grid__game, container, false);
+        return inflater.inflate(R.layout.fragment_grid_game, container, false);
     }
     @Override
     public void onViewCreated(View v, Bundle savedInstanceState){
         super.onViewCreated(v,savedInstanceState);
-        getPreferences();
         Board board = new Board(mida,controlTemps,alias);
+        fotoTorn = requireView().findViewById(R.id.torn);
+        temps = requireView().findViewById(R.id.temps);
         board.initializeBoard();
         GridView gridView = requireView().findViewById(R.id.graella);
-        ImageAdapter imageAdapter = new ImageAdapter(requireActivity(), mida, board,controlTemps,alias,fotoTorn,temps);
+        ImageAdapter imageAdapter = new ImageAdapter(requireActivity(), mida, board,controlTemps,alias,fotoTorn,temps,listener);
         gridView.setNumColumns(mida);
         gridView.setAdapter(imageAdapter);
     }

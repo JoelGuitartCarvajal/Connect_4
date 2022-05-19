@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.connect_4.Fragments.Grid_GameFragment;
 import com.example.connect_4.R;
 import com.example.connect_4.ResultatPartida;
 
@@ -22,8 +23,9 @@ public class ImageAdapter extends BaseAdapter {
     private String alias;
     private ImageView fotoTorn;
     private TextView tempsRestant;
+    private Grid_GameFragment.GridGameListener listener;
 
-    public ImageAdapter(Activity mContext, int mida, Board board, boolean controlTemps, String alias, ImageView fotoTorn, TextView tempsRestant) {
+    public ImageAdapter(Activity mContext, int mida, Board board, boolean controlTemps, String alias, ImageView fotoTorn, TextView tempsRestant, Grid_GameFragment.GridGameListener listener) {
         this.mContext = mContext;
         this.mida = mida;
         this.board = board;
@@ -31,6 +33,7 @@ public class ImageAdapter extends BaseAdapter {
         this.alias = alias;
         this.fotoTorn = fotoTorn;
         this.tempsRestant = tempsRestant;
+        this.listener = listener;
     }
 
 
@@ -125,6 +128,7 @@ public class ImageAdapter extends BaseAdapter {
             updateTorn();
             updateTemps();
             notifyDataSetChanged();
+            listener.onGameClickLog(position,board);
         }
     }
 

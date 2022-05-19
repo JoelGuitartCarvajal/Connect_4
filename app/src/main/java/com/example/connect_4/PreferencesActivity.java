@@ -9,7 +9,6 @@ import android.preference.PreferenceManager;
 
 public class PreferencesActivity extends AppCompatActivity {
 
-    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,8 +17,8 @@ public class PreferencesActivity extends AppCompatActivity {
     }
     public static class OpcionesFragment extends PreferenceFragment {
         @Override
-        public void onCreate(Bundle savedInstaceState) {
-            super.onCreate(savedInstaceState);
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
             PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, false);
         }
