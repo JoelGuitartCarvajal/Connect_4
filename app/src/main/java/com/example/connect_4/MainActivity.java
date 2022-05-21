@@ -21,14 +21,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
-        PreferenceManager.setDefaultValues(this,R.xml.preferences,false);
+        //PreferenceManager.setDefaultValues(this,R.xml.preferences,false);
 
         Button ajudaBt = findViewById(R.id.ajuda);
         Button començarBt = findViewById(R.id.jugar);
         Button sortirBt = findViewById(R.id.sortir);
+        Button consultBt = findViewById(R.id.btConsult);
         ajudaBt.setOnClickListener(this);
         començarBt.setOnClickListener(this);
         sortirBt.setOnClickListener(this);
+        consultBt.setOnClickListener(this);
     }
 
 

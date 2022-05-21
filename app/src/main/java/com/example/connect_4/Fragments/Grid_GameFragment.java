@@ -14,6 +14,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.connect_4.PreferencesActivity;
 import com.example.connect_4.R;
 import com.example.connect_4.UTILS.Board;
 import com.example.connect_4.UTILS.ImageAdapter;
@@ -21,16 +22,15 @@ import com.example.connect_4.UTILS.ImageAdapter;
 public class Grid_GameFragment extends Fragment {
 
     public GridGameListener listener;
-    public String alias = "Prova";
-    public int mida = 7;
-    public boolean controlTemps = false;
+    public String alias;
+    public int mida;
+    public boolean controlTemps;
     public ImageView fotoTorn;
     public TextView temps;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getPreferences();
     }
 
     @Override
@@ -42,9 +42,8 @@ public class Grid_GameFragment extends Fragment {
     @Override
     public void onViewCreated(View v, Bundle savedInstanceState){
         super.onViewCreated(v,savedInstanceState);
+        getPreferences();
         Board board = new Board(mida,controlTemps,alias);
-        fotoTorn = requireView().findViewById(R.id.torn);
-        temps = requireView().findViewById(R.id.temps);
         board.initializeBoard();
         GridView gridView = requireView().findViewById(R.id.graella);
         ImageAdapter imageAdapter = new ImageAdapter(requireActivity(), mida, board,controlTemps,alias,fotoTorn,temps,listener);
@@ -53,9 +52,9 @@ public class Grid_GameFragment extends Fragment {
     }
 
     private void getPreferences() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireActivity());
         alias = prefs.getString("alias","Jugador1");
-        mida = prefs.getInt("board_size",7);
+        mida = Integer.parseInt( prefs.getString("board_size", String.valueOf(7)));
         controlTemps = prefs.getBoolean("control_temps",false);
         fotoTorn = requireView().findViewById(R.id.torn);
         temps = requireView().findViewById(R.id.temps);

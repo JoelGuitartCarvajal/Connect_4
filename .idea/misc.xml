@@ -16,15 +16,18 @@
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_ajuda.xml" value="0.25" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_ajuda_land.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_configuracio.xml" value="0.22" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_consult_actv.xml" value="0.16" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_detall.xml" value="0.18342391304347827" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_joc_actv.xml" value="0.22" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main_land.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_preferences.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_resultat_partida.xml" value="0.25" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_game_log.xml" value="0.33" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_game_log.xml" value="0.22" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_grid__game.xml" value="0.25" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_query.xml" value="0.1956521739130435" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_register.xml" value="0.1" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_grid_game.xml" value="0.18342391304347827" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_query.xml" value="0.25" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/fragment_register.xml" value="0.15" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/list_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/xml/preferences.xml" value="0.25" />

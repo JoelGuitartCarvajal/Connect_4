@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/LstListado"
+        android:id="@+id/QueryList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

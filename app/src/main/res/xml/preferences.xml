@@ -9,29 +9,21 @@
         tools:text="@string/configPreferences">
 
         <EditTextPreference
-            android:id="@+id/preference_usuari"
-            android:defaultValue="false"
             android:dialogTitle="Introdueix el nom"
             android:key="alias"
             android:summary="Nom de l'usuari"
             android:title="Nom d'usuari" />
         <ListPreference
-            android:id="@+id/preference_board_size"
-            android:defaultValue="7"
             android:dialogTitle="Selecciona el valor"
             android:entries="@array/board_size"
-            android:entryValues="@array/board_size"
+            android:entryValues="@array/board_values"
             android:key="board_size"
             android:summary="Mida de la graella del joc"
             android:title="Mida graella" />
         <CheckBoxPreference
-            android:id="@+id/preference_control_temps"
-            android:defaultValue="false"
             android:key="control_temps"
             android:summary="Marca si vols control de temps"
             android:title="@string/ControlTemps" />
-
-
     </PreferenceCategory>
 
 </PreferenceScreen>

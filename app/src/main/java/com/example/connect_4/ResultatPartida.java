@@ -3,6 +3,7 @@ package com.example.connect_4;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.connect_4.UTILS.SQLite;
 
 import java.util.Date;
 
@@ -28,6 +31,7 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
     private EditText log;
     private EditText email;
     private Toolbar toolbar;
+    private ContentValues values;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
         setSupportActionBar(toolbar);
 
 
-        getIntentValues();
+
         data = findViewById(R.id.diaihora);
         log = findViewById(R.id.valorslog);
         email= findViewById(R.id.emaildst);
@@ -49,8 +53,14 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
         enviarMail.setOnClickListener(this);
         novaPartida.setOnClickListener(this);
         sortir.setOnClickListener(this);
+        SQLite bd = SQLite.getInstance(getApplicationContext());
 
+        values = new ContentValues();
+        getIntentValues();
         setEditTexts();
+        if(bd.register(values)!= -1){
+            Toast.makeText(this,"Dades guardades a la BBDD",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setEditTexts() {
@@ -58,6 +68,7 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
         String logTemps ="";
         Date dataAvui = new Date();
         data.setText(dataAvui.toString());
+        values.put("data", String.valueOf(dataAvui));
         if(controlTemps){
             tempsTotal = tempsTotal - timeLeft;
             logTemps+= "\n" + "Temps total:" + tempsTotal + "segons.";
@@ -68,21 +79,25 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
             log.setText("Alias" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Temps esgotat.");
+            values.put("Resultat","Temps esgotat!");
         }
         else if(maximPieces == 0){
             log.setText("Alias" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Heu empatat.");
+            values.put("Resultat","Has empatat!");
         }
         else if(torn == 2){
             log.setText("Alias" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Has GUANYAT!.");
+            values.put("Resultat","Has GUANYAT!");
         }
         else if (torn == 1){
             log.setText("Alias" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Has perdut malo.");
+            values.put("Resultat","Has PERDUT!");
         }
     }
 
@@ -93,6 +108,10 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
         timeLeft = getIntent().getIntExtra("tempsrestant", 0);
         torn = getIntent().getIntExtra("torn",0);
         maximPieces = getIntent().getIntExtra("empat",0);
+        values.put("nom",alias);
+        values.put("Midagraella",mida);
+        values.put("ControlTemps",controlTemps);
+        values.put("TempsFinal",timeLeft);
     }
 
     @Override
