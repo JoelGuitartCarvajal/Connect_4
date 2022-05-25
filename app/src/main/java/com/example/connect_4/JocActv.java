@@ -32,14 +32,6 @@ public class JocActv extends FragmentActivity implements Grid_GameFragment.GridG
         setContentView(R.layout.activity_joc_actv);
         Grid_GameFragment gameFragment = (Grid_GameFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentJoc);
         gameFragment.setListener(this);
-        /*getValues();
-        Board board = new Board(mida,controlTemps);
-        board.initializeBoard();
-        GridView gridView = findViewById(R.id.graella);
-        ImageAdapter imageAdapter = new ImageAdapter(this, mida, board,controlTemps,alias,fotoTorn,temps);
-        gridView.setNumColumns(mida);
-        gridView.setAdapter(imageAdapter);*/
-
     }
 
     @Override
@@ -65,12 +57,4 @@ public class JocActv extends FragmentActivity implements Grid_GameFragment.GridG
         return log;
 
     }
-
-    /*private void getValues() {
-        alias = getIntent().getStringExtra("alias");
-        mida = getIntent().getIntExtra("mida", 5);
-        controlTemps = getIntent().getBooleanExtra("temps",false);
-        fotoTorn = findViewById(R.id.torn);
-        temps = findViewById(R.id.temps);
-    }*/
 }

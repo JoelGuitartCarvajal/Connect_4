@@ -1,9 +1,12 @@
 package com.example.connect_4.UTILS;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board  {
+public class Board implements Parcelable {
     public int size;
     public Piece[][] board;
     public boolean controlTemps;
@@ -23,6 +26,29 @@ public class Board  {
         this.controlTemps = controlTemps;
         this.alias = alias;
     }
+
+    protected Board(Parcel in) {
+        size = in.readInt();
+        controlTemps = in.readByte() != 0;
+        timeToEnd = in.readByte() != 0;
+        temps = in.readLong();
+        torn = in.readInt();
+        maximPieces = in.readInt();
+        alias = in.readString();
+    }
+
+    public static final Creator<Board> CREATOR = new Creator<Board>() {
+        @Override
+        public Board createFromParcel(Parcel in) {
+            return new Board(in);
+        }
+
+        @Override
+        public Board[] newArray(int size) {
+            return new Board[size];
+        }
+    };
+
     public void initializeBoard(){
         pecesUsuari = new ArrayList<>();
         pecesCPU = new ArrayList<>();
@@ -43,13 +69,6 @@ public class Board  {
 
     public void getPossiblePositions() {
         llocsPosibles.clear();
-        /*for (int j=0; j< size;j++){
-            for(int i=0; i< size;i++){
-                if(board[i][j].getState() == 0 && (i+1 == size || board[i+1][j].getState()!=0) ){
-                    llocsPosibles.add(board[i][j].getTuple());
-                }
-            }
-        }*/
         boolean emptyColumn = true;
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < size && emptyColumn; i++) {
@@ -115,28 +134,6 @@ public class Board  {
     }
 
     private boolean fourInContraDiagonal(int position) {
-        /*int reversedTorn = torn;
-        int connect = 1;
-        if(reversedTorn == 1){
-            reversedTorn = 2;
-        } else {
-            reversedTorn = 1;
-        }
-        for (int i =position / size, j = position % size; i < size && j < size && i>=0 && j>=0; i++,j++ ){
-            if(board[i][j].getState()!=reversedTorn ){
-                break;
-            }else {
-                connect++;
-            }
-        }
-        for (int i =position / size, j = position % size; i < size && j < size && i>=0 && j>=0; i--,j-- ){
-            if(board[i][j].getState()!=reversedTorn ){
-                break;
-            } else {
-                connect++;
-            }
-        }
-        return connect >= 4;*/
         int connected = 1;
         int x = position/size;
         int y = position%size;
@@ -168,28 +165,6 @@ public class Board  {
     }
 
     private boolean fourInMainDiagonal(int position) {
-       /* int reversedTorn = torn;
-        int connect = 1;
-        if(reversedTorn == 1){
-            reversedTorn = 2;
-        } else {
-            reversedTorn = 1;
-        }
-        for (int i =position / size, j = position % size; i < size && j < size && i>=0 && j>=0; i++,j-- ){
-            if(board[i][j].getState()!=reversedTorn ){
-                break;
-            } else {
-                connect++;
-            }
-        }
-        for (int i =position /size, j = position % size; i < size && j < size && i>=0 && j>=0; i--,j++ ){
-            if(board[i][j].getState()!=reversedTorn ){
-                break;
-            } else {
-                connect++;
-            }
-        }
-        return connect >= 4;*/
         int connected = 1;
         int x = position/size;
         int y = position%size;
@@ -257,5 +232,19 @@ public class Board  {
             }
         }
         return false;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeSerializable(board);
+        parcel.writeInt(size);
+        parcel.writeInt(torn);
+        parcel.writeList(pecesUsuari);
+        parcel.writeList(pecesCPU);
     }
 }

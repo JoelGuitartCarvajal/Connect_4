@@ -18,6 +18,7 @@ import com.example.connect_4.PreferencesActivity;
 import com.example.connect_4.R;
 import com.example.connect_4.UTILS.Board;
 import com.example.connect_4.UTILS.ImageAdapter;
+import com.example.connect_4.UTILS.Variables;
 
 public class Grid_GameFragment extends Fragment {
 
@@ -27,6 +28,7 @@ public class Grid_GameFragment extends Fragment {
     public boolean controlTemps;
     public ImageView fotoTorn;
     public TextView temps;
+    public Board board;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,19 +45,38 @@ public class Grid_GameFragment extends Fragment {
     public void onViewCreated(View v, Bundle savedInstanceState){
         super.onViewCreated(v,savedInstanceState);
         getPreferences();
-        Board board = new Board(mida,controlTemps,alias);
-        board.initializeBoard();
+        if(savedInstanceState != null){
+            onRestoreInstanceState(savedInstanceState);
+        } else {
+            board = new Board(mida, controlTemps, alias);
+            board.initializeBoard();
+        }
         GridView gridView = requireView().findViewById(R.id.graella);
         ImageAdapter imageAdapter = new ImageAdapter(requireActivity(), mida, board,controlTemps,alias,fotoTorn,temps,listener);
         gridView.setNumColumns(mida);
         gridView.setAdapter(imageAdapter);
     }
 
+    private void onRestoreInstanceState(Bundle savedInstanceState) {
+        alias = savedInstanceState.getString(Variables.alias);
+        mida = savedInstanceState.getInt(Variables.mida);
+        controlTemps = savedInstanceState.getBoolean(Variables.controltemps);
+        board = savedInstanceState.getParcelable(Variables.board);
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putString(Variables.alias,alias);
+        savedInstanceState.putInt(Variables.mida,mida);
+        savedInstanceState.putBoolean(Variables.controltemps,controlTemps);
+        savedInstanceState.putParcelable(Variables.board,board);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
     private void getPreferences() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireActivity());
-        alias = prefs.getString("alias","Jugador1");
-        mida = Integer.parseInt( prefs.getString("board_size", String.valueOf(7)));
-        controlTemps = prefs.getBoolean("control_temps",false);
+        alias = prefs.getString(Variables.alias,"Jugador1");
+        mida = Integer.parseInt( prefs.getString(Variables.mida, String.valueOf(7)));
+        controlTemps = prefs.getBoolean(Variables.controltemps,false);
         fotoTorn = requireView().findViewById(R.id.torn);
         temps = requireView().findViewById(R.id.temps);
     }

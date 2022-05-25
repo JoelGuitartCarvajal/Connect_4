@@ -17,11 +17,11 @@
             android:dialogTitle="Selecciona el valor"
             android:entries="@array/board_size"
             android:entryValues="@array/board_values"
-            android:key="board_size"
+            android:key="mida"
             android:summary="Mida de la graella del joc"
             android:title="Mida graella" />
         <CheckBoxPreference
-            android:key="control_temps"
+            android:key="controltemps"
             android:summary="Marca si vols control de temps"
             android:title="@string/ControlTemps" />
     </PreferenceCategory>

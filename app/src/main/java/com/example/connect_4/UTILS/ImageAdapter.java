@@ -76,7 +76,7 @@ public class ImageAdapter extends BaseAdapter {
         if (board.getCPUPositions().contains(position)) {
             return R.drawable.yellow_piece;
         } else {
-            return R.drawable.empty_piece;
+            return R.drawable.empty_piece_nobackground;
         }
     }
 

@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.connect_4.Fragments.QueryFragment;
 import com.example.connect_4.Fragments.RegisterFragment;
+import com.example.connect_4.UTILS.Variables;
 
 public class ConsultActv extends FragmentActivity implements QueryFragment.GameListener {
 
@@ -33,7 +34,7 @@ public class ConsultActv extends FragmentActivity implements QueryFragment.GameL
         }
         else {
             Intent intent = new Intent(this, DetallActivity.class);
-            intent.putExtra("dades", pos);
+            intent.putExtra(Variables.dades, pos);
             startActivity(intent);
         }
     }

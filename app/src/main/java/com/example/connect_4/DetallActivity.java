@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.connect_4.Fragments.RegisterFragment;
+import com.example.connect_4.UTILS.Variables;
 
 public class DetallActivity extends AppCompatActivity {
 
-    //public static final String selected = "cellSelected";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,6 @@ public class DetallActivity extends AppCompatActivity {
 
         RegisterFragment detall = (RegisterFragment) getSupportFragmentManager().
                 findFragmentById(R.id.detallFrg);
-        detall.viewDetails(getIntent().getIntExtra("dades", 0));
+        detall.viewDetails(getIntent().getIntExtra(Variables.dades, 0));
     }
 }

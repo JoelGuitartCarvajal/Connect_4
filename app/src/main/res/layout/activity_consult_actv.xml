@@ -20,6 +20,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:onClick="onClick"
-        android:text="Tornar Enrere" />
+        android:text="@string/Tornarenrere" />
 
 </LinearLayout>

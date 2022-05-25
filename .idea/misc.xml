@@ -5,21 +5,25 @@
       <map>
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1295" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1295" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_ajuda.xml" value="0.1728395061728395" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_ajuda.xml" value="0.22" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_configuracio.xml" value="0.1728395061728395" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_consult_actv.xml" value="0.2384428223844282" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_joc_actv.xml" value="0.22" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_main.xml" value="0.1728395061728395" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_resultat_partida.xml" value="0.1728395061728395" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_consult_actv.xml" value="0.2" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_joc_actv.xml" value="0.16" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_main.xml" value="0.13" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/activity_resultat_partida.xml" value="0.16" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-land/fragment_grid_game.xml" value="0.1728395061728395" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-large-land/activity_consult_actv.xml" value="0.14" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-large-land/activity_joc_actv.xml" value="0.18" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-large-land/fragment_grid_game.xml" value="0.12" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-large-port/activity_consult_actv.xml" value="0.18" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout-large-port/activity_joc_actv.xml" value="0.14" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_ajuda.xml" value="0.25" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_ajuda_land.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_configuracio.xml" value="0.22" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_consult_actv.xml" value="0.16" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_consult_actv.xml" value="0.2" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_detall.xml" value="0.18342391304347827" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_joc_actv.xml" value="0.22" />
-        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_main_land.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_preferences.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Usuari/AndroidStudioProjects/Connect_4/app/src/main/res/layout/activity_resultat_partida.xml" value="0.25" />

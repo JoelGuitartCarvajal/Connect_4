@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.connect_4.UTILS.SQLite;
+import com.example.connect_4.UTILS.Variables;
 
 import java.util.Date;
 
@@ -55,12 +56,39 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
         sortir.setOnClickListener(this);
         SQLite bd = SQLite.getInstance(getApplicationContext());
 
-        values = new ContentValues();
-        getIntentValues();
-        setEditTexts();
-        if(bd.register(values)!= -1){
-            Toast.makeText(this,"Dades guardades a la BBDD",Toast.LENGTH_SHORT).show();
+
+        if(savedInstanceState!= null){
+            getBackInstanceState(savedInstanceState);
+        } else {
+            values = new ContentValues();
+            getIntentValues();
+            setEditTexts();
+            if (bd.register(values) != -1) {
+                Toast.makeText(this, R.string.TextDadesGuardadesCorrectament, Toast.LENGTH_SHORT).show();
+            }
         }
+    }
+
+    private void getBackInstanceState(Bundle savedInstanceState) {
+        data.setText(savedInstanceState.getString(Variables.data));
+        log.setText(savedInstanceState.getString(Variables.log));
+        email.setText(savedInstanceState.getString(Variables.email));
+        mida = savedInstanceState.getInt(Variables.mida);
+        alias = savedInstanceState.getString(Variables.alias);
+        timeLeft = savedInstanceState.getInt(Variables.timeLeft);
+        controlTemps = savedInstanceState.getBoolean(Variables.controltemps);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putString(Variables.data,data.getText().toString());
+        savedInstanceState.putString(Variables.log,log.getText().toString());
+        savedInstanceState.putString(Variables.email,email.getText().toString());
+        savedInstanceState.putInt(Variables.mida,mida);
+        savedInstanceState.putString(Variables.alias,alias);
+        savedInstanceState.putInt(Variables.timeLeft,timeLeft);
+        savedInstanceState.putBoolean(Variables.controltemps,controlTemps);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     private void setEditTexts() {
@@ -76,25 +104,25 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
             logTemps+= "\n" + "Temps total:" + timeLeft + "segons.";
         }
         if (timeLeft == 0){
-            log.setText("Alias" + alias + "." + "\n" +
+            log.setText("Alias:" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Temps esgotat.");
             values.put("Resultat","Temps esgotat!");
         }
         else if(maximPieces == 0){
-            log.setText("Alias" + alias + "." + "\n" +
+            log.setText("Alias:" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Heu empatat.");
             values.put("Resultat","Has empatat!");
         }
         else if(torn == 2){
-            log.setText("Alias" + alias + "." + "\n" +
+            log.setText("Alias:" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Has GUANYAT!.");
             values.put("Resultat","Has GUANYAT!");
         }
         else if (torn == 1){
-            log.setText("Alias" + alias + "." + "\n" +
+            log.setText("Alias:" + alias + "." + "\n" +
                     "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
                     "Has perdut malo.");
             values.put("Resultat","Has PERDUT!");
@@ -128,11 +156,11 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
             case R.id.enviarmail:
                 if(!email.getText().toString().isEmpty()){
                     Intent intent1 = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + email.getText().toString()));
-                    intent1.putExtra(Intent.EXTRA_SUBJECT,"Resultat Partida");
+                    intent1.putExtra(Intent.EXTRA_SUBJECT,R.string.ResultatPartidaIntent);
                     intent1.putExtra(Intent.EXTRA_TEXT, log.getText().toString());
                     startActivity(intent1);
                 }else {
-                    Toast.makeText(this, "Posa un email valid", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.EmailInvalid, Toast.LENGTH_SHORT).show();
                 }
         }
     }

@@ -7,28 +7,32 @@
     android:orientation="vertical"
     tools:context=".ConsultActv">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_weight="80"
+        android:orientation="horizontal">
 
-        <LinearLayout
+        <fragment
+            android:id="@+id/queryFrg"
+            class="com.example.connect_4.Fragments.QueryFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_weight="100" />
 
-            <fragment
-                android:id="@+id/queryFrg"
-                class="com.example.connect_4.Fragments.QueryFragment"
-                android:layout_width="match_parent"
-                android:layout_height="298dp" />
+        <fragment
+            android:id="@+id/detallFrg"
+            class="com.example.connect_4.Fragments.RegisterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="100" />
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <Button
         android:id="@+id/tornarMain"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:onClick="onClick"

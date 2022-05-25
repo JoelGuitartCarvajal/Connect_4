@@ -1,5 +1,6 @@
 package com.example.connect_4.Fragments;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.connect_4.ConsultActv;
 import com.example.connect_4.R;
 import com.example.connect_4.UTILS.SQLite;
 
@@ -37,5 +39,9 @@ public class RegisterFragment extends Fragment {
                     "Temps final:" + "" + cursor.getString(5) + "\n" +
                     "Resultat:" + "" + cursor.getString(6);
         return logPartida;
+    }
+    public void onClick(View v) {
+        Intent intent = new Intent(requireContext(), ConsultActv.class);
+        startActivity(intent);
     }
 }
