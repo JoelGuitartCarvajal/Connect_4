@@ -44,7 +44,7 @@ public class SQLite extends SQLiteOpenHelper {
 
     public long register(ContentValues register) {
         SQLiteDatabase database = getWritableDatabase();
-        return database.insert("Historial", null, register);
+        return database.insert(Variables.historial, null, register);
     }
 
     public Cursor getDataFromDB() {

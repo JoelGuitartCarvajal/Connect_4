@@ -19,7 +19,7 @@ import com.example.connect_4.UTILS.Variables;
 
 import java.util.Date;
 
-public class ResultatPartida extends AppCompatActivity implements View.OnClickListener {
+public class ResultatPartidaActv extends AppCompatActivity implements View.OnClickListener {
 
     private int mida;
     private boolean controlTemps;
@@ -96,50 +96,50 @@ public class ResultatPartida extends AppCompatActivity implements View.OnClickLi
         String logTemps ="";
         Date dataAvui = new Date();
         data.setText(dataAvui.toString());
-        values.put("data", String.valueOf(dataAvui));
+        values.put(Variables.sqliteData, String.valueOf(dataAvui));
         if(controlTemps){
             tempsTotal = tempsTotal - timeLeft;
-            logTemps+= "\n" + "Temps total:" + tempsTotal + "segons.";
+            logTemps+= "\n" + Variables.tempsTotal + tempsTotal + Variables.segons;
         } else {
-            logTemps+= "\n" + "Temps total:" + timeLeft + "segons.";
+            logTemps+= "\n" + Variables.tempsTotal + timeLeft + Variables.segons;
         }
         if (timeLeft == 0){
-            log.setText("Alias:" + alias + "." + "\n" +
-                    "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
-                    "Temps esgotat.");
-            values.put("Resultat","Temps esgotat!");
+            log.setText(Variables.AliasLog + alias + "." + "\n" +
+                    Variables.midaGraella + String.valueOf(mida) + "." + logTemps + "\n" +
+                    Variables.tempsEsgotat);
+            values.put(Variables.sqliteResultat,Variables.tempsEsgotat);
         }
         else if(maximPieces == 0){
-            log.setText("Alias:" + alias + "." + "\n" +
-                    "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
-                    "Heu empatat.");
-            values.put("Resultat","Has empatat!");
+            log.setText(Variables.AliasLog + alias + "." + "\n" +
+                    Variables.midaGraella + String.valueOf(mida) + "." + logTemps + "\n" +
+                    Variables.hasEmpatat);
+            values.put(Variables.sqliteResultat,Variables.hasEmpatat);
         }
         else if(torn == 2){
-            log.setText("Alias:" + alias + "." + "\n" +
-                    "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
-                    "Has GUANYAT!.");
-            values.put("Resultat","Has GUANYAT!");
+            log.setText(Variables.AliasLog + alias + "." + "\n" +
+                    Variables.midaGraella + String.valueOf(mida) + "." + logTemps + "\n" +
+                    Variables.hasGuanyat);
+            values.put(Variables.sqliteResultat,Variables.hasGuanyat);
         }
         else if (torn == 1){
-            log.setText("Alias:" + alias + "." + "\n" +
-                    "Mida graella:" + String.valueOf(mida) + "." + logTemps + "\n" +
-                    "Has perdut malo.");
-            values.put("Resultat","Has PERDUT!");
+            log.setText(Variables.AliasLog + alias + "." + "\n" +
+                    Variables.midaGraella + String.valueOf(mida) + "." + logTemps + "\n" +
+                    Variables.hasPerdut);
+            values.put(Variables.sqliteResultat,Variables.hasPerdut);
         }
     }
 
     private void getIntentValues() {
-        alias = getIntent().getStringExtra("alias");
-        mida = getIntent().getIntExtra("mida", 5);
-        controlTemps = getIntent().getBooleanExtra("temps",false);
-        timeLeft = getIntent().getIntExtra("tempsrestant", 0);
-        torn = getIntent().getIntExtra("torn",0);
-        maximPieces = getIntent().getIntExtra("empat",0);
-        values.put("nom",alias);
-        values.put("Midagraella",mida);
-        values.put("ControlTemps",controlTemps);
-        values.put("TempsFinal",timeLeft);
+        alias = getIntent().getStringExtra(Variables.alias);
+        mida = getIntent().getIntExtra(Variables.mida, 5);
+        controlTemps = getIntent().getBooleanExtra(Variables.controltemps,false);
+        timeLeft = getIntent().getIntExtra(Variables.timeLeft, 0);
+        torn = getIntent().getIntExtra(Variables.torn,0);
+        maximPieces = getIntent().getIntExtra(Variables.empat,0);
+        values.put(Variables.sqliteNom,alias);
+        values.put(Variables.sqliteMidaGraella,mida);
+        values.put(Variables.sqliteControlTemps,controlTemps);
+        values.put(Variables.sqliteTempsFinal,timeLeft);
     }
 
     @Override

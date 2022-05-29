@@ -16,9 +16,9 @@
             android:exported="false" />
         <activity android:name=".PreferencesActivity" />
         <activity android:name=".JocActv" />
-        <activity android:name=".ResultatPartida" />
-        <activity android:name=".Configuracio" />
-        <activity android:name=".Ajuda" />
+        <activity android:name=".ResultatPartidaActv" />
+        <activity android:name=".ConfiguracioActv" />
+        <activity android:name=".AjudaActv" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

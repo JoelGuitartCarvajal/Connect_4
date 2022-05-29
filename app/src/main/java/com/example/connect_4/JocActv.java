@@ -14,6 +14,7 @@ import com.example.connect_4.Fragments.GameLogFragment;
 import com.example.connect_4.Fragments.Grid_GameFragment;
 import com.example.connect_4.UTILS.Board;
 import com.example.connect_4.UTILS.ImageAdapter;
+import com.example.connect_4.UTILS.Variables;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,14 +46,14 @@ public class JocActv extends FragmentActivity implements Grid_GameFragment.GridG
 
     private String getLog(int position, Board board) {
         String log = "";
-        log += "Alias" + board.alias + "\n";
-        log += "Mida graella" + String.valueOf(board.size) + "\n";
-        log += "Casella ocupada:" + "(" + String.valueOf(position / board.size) + "," + String.valueOf(position % board.size) + ")" + "\n";
-        log += "Inici tirada:" + new SimpleDateFormat("hh:mm:ss").format(new Date()) + "Final tirada:" + new SimpleDateFormat("hh:mm:ss").format(new Date()) + "\n";
+        log += Variables.AliasLog + board.alias + "\n";
+        log += Variables.midaGraella + String.valueOf(board.size) + "\n";
+        log += Variables.casellaOcupada + "(" + String.valueOf(position / board.size) + "," + String.valueOf(position % board.size) + ")" + "\n";
+        log += Variables.iniciTirada + new SimpleDateFormat("hh:mm:ss").format(new Date()) + Variables.finalTirada + new SimpleDateFormat("hh:mm:ss").format(new Date()) + "\n";
         if(board.controlTemps == false){
-            log += "Control de temps desactivat";
+            log += Variables.controlTempsDesactivat;
         } else {
-            log += "Temps restant:" + String.valueOf(board.getTime() / 1000) + "segons";
+            log += Variables.tempsRestant + String.valueOf(board.getTime() / 1000) + Variables.segons;
         }
         return log;
 

@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ajuda:
-                Intent intent = new Intent(this,Ajuda.class);
+                Intent intent = new Intent(this, AjudaActv.class);
                 startActivity(intent);
-                finish();
+                //finish();
                 break;
             case R.id.jugar:
                 Intent intent2 = new Intent(this,JocActv.class);

@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.connect_4.Fragments.Grid_GameFragment;
 import com.example.connect_4.R;
-import com.example.connect_4.ResultatPartida;
+import com.example.connect_4.ResultatPartidaActv;
 
 public class ImageAdapter extends BaseAdapter {
     private Activity mContext;
@@ -60,9 +60,6 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             btn = (Button) convertView;
         }
-        /*int x = position / mida;
-        int y = position % mida;
-        Tuple tupla = new Tuple(x, y);*/
         btn.setBackgroundResource(setBackground(position));
         btn.setOnClickListener(new MyOnClickListener(mContext, position));
         btn.setId(position);
@@ -104,7 +101,7 @@ public class ImageAdapter extends BaseAdapter {
                     }
                 }
             } else {
-                Toast.makeText(context, "Moviment invàlid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, Variables.movimentInvalid, Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -151,13 +148,13 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             timeLeft = (int) (System.currentTimeMillis() / 1000 - board.temps);
         }
-        Intent intent = new Intent(mContext, ResultatPartida.class);
-        intent.putExtra("alias", alias);
-        intent.putExtra("mida",mida);
-        intent.putExtra("temps",controlTemps);
-        intent.putExtra("tempsrestant", timeLeft);
-        intent.putExtra("torn", board.torn);
-        intent.putExtra("empat",board.maximPieces);
+        Intent intent = new Intent(mContext, ResultatPartidaActv.class);
+        intent.putExtra(Variables.alias, alias);
+        intent.putExtra(Variables.mida,mida);
+        intent.putExtra(Variables.controltemps,controlTemps);
+        intent.putExtra(Variables.timeLeft, timeLeft);
+        intent.putExtra(Variables.torn, board.torn);
+        intent.putExtra(Variables.empat,board.maximPieces);
         mContext.startActivity(intent);
         mContext.finish();
     }

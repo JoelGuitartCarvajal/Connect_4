@@ -12,7 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class Configuracio extends AppCompatActivity implements View.OnClickListener {
+public class ConfiguracioActv extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Ajuda extends AppCompatActivity implements View.OnClickListener {
+public class AjudaActv extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +21,8 @@ public class Ajuda extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tornarBtn:
-                Intent intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(this,MainActivity.class);
+                //startActivity(intent);
                 finish();
         }
     }
